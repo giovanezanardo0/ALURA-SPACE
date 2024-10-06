@@ -1,0 +1,18 @@
+@startuml
+skinparam packageStyle rectangle
+
+actor Usuario
+
+Usuario -> "ALURA-SPACE/urls.py" : Request
+"meu_projeto/urls.py" -> "galeria/urls.py" : Include app URLs
+"galeria/urls.py" -> "galeria/views.py" : Match path and call view
+"galeria/views.py" -> "galeria/templates/galeria/index.html" : Render template (index)
+Usuario <- "galeria/templates/galeria/index.html" : Response (HTML)
+
+Usuario -> "ALURA-SPACE/urls.py" : Request (/imagem/)
+"meu_projeto/urls.py" -> "galeria/urls.py" : Include app URLs
+"galeria/urls.py" -> "galeria/views.py" : Match path and call view (imagem)
+"galeria/views.py" -> "galeria/templates/galeria/imagem.html" : Render template (imagem)
+Usuario <- "galeria/templates/galeria/imagem.html" : Response (HTML)
+
+@enduml
